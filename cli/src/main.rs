@@ -15,10 +15,10 @@ mod model;
 mod packet_ids;
 
 fn main() -> std::io::Result<()> {
-    let matches = App::new("dyspro-cli")
+    let matches = App::new("dyspro")
         .subcommand(
             SubCommand::with_name("run")
-                .aliases(&["up", "create", "new"])
+                .aliases(&["start"])
                 .about("Run a process")
                 .version("0.1")
                 .arg(
