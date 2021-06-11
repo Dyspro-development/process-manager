@@ -147,9 +147,10 @@ void handle_conn(int socket) {
                 write(socket, buf.data_array.data(), 1);
                 processes[id]->running = false;
                 delete processes[id]->child;
-                delete processes[id];
+                 data_mtx.unlock();
+                 delete processes[id]; // updating libs
                 processes.erase(id);
-                data_mtx.unlock();
+               
                 break;
             }
             case (int) Packet::Stop: {
